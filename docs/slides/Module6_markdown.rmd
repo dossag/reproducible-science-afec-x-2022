@@ -3,7 +3,7 @@ title: "Reproducible science workshop: Module6"
 subtitle: "Markdown"
 author: "[Gbadamassi G.O. Dossa](https://scholar.google.com/citations?user=w20AkZcAAAAJ&hl=en)"
 institute: "Xishuangbanna Tropical Botanical Garden, XTBG-CAS"
-date: "2021/10/1 (updated: `r Sys.Date()`)"
+date: "(updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs

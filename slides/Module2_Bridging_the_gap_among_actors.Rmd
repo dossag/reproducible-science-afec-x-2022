@@ -3,7 +3,7 @@ title: "Reproducible science: Module2"
 subtitle: "Bridging the gap among actors"
 author: "[Gbadamassi G.O. Dossa](https://scholar.google.com/citations?user=w20AkZcAAAAJ&hl=en)"
 institute: "Xishuangbanna Tropical Botanical Garden, XTBG-CAS"
-date: "2021/09/20 (updated: `r Sys.Date()`)"
+date: "(updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs

@@ -4,7 +4,7 @@
     <title>Reproducible science: Module 4</title>
     <meta charset="utf-8" />
     <meta name="author" content="Gbadamassi G.O. Dossa" />
-    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -12,11 +12,21 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Reproducible science: Module 4
+]
+.subtitle[
 ## Data visualization in Tidyverse: the power of ggplot2
+]
+.author[
 ### <a href="https://scholar.google.com/citations?user=w20AkZcAAAAJ&amp;hl=en">Gbadamassi G.O. Dossa</a>
+]
+.institute[
 ### Xishuangbanna Tropical Botanical Garden, XTBG-CAS
-### 2021/09/28 (updated: 2021-11-02)
+]
+.date[
+### (updated: 2022-11-04)
+]
 
 ---
 
@@ -126,17 +136,6 @@ destfile &lt;- "twitter_cit_data.csv"
 # Apply download.file function in R to download from url
 download.file(url, destfile)
 library(tidyverse)
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 4.1.1
-```
-
-```
-## Warning: package 'readr' was built under R version 4.1.1
-```
-
-```r
 # Read the data file with read_csv() and save with name "citations_raw"
 citations_raw&lt;-read_csv(file="twitter_cit_data.csv")
 citations &lt;- rename(citations_raw,
@@ -243,17 +242,19 @@ head(citations_ecology)
 ```
 
 ```
-## # A tibble: 6 x 12
-##   journal impactfactor pubyear Volume Issue Authors    colldate pubdate nbtweets
-##   &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;
-## 1 ecology         6.16    2014     95 12    Maglianes~ 3/19/20~ 12/1/2~        1
-## 2 ecology         6.16    2014     95 12    Soinen     3/19/20~ 12/1/2~        6
-## 3 ecology         6.16    2014     95 12    Graham an~ 3/19/20~ 12/1/2~        1
-## 4 ecology         6.16    2014     95 11    White et ~ 3/19/20~ 11/1/2~        9
-## 5 ecology         6.16    2014     95 11    Einarson ~ 3/19/20~ 11/1/2~       15
-## 6 ecology         6.16    2014     95 11    Haav and ~ 3/19/20~ 11/1/2~        2
-## # ... with 3 more variables: Number of users &lt;dbl&gt;, Twitter reach &lt;dbl&gt;,
-## #   woscitations &lt;dbl&gt;
+## # A tibble: 6 × 12
+##   journal impactf…¹ pubyear Volume Issue Authors colld…² pubdate nbtwe…³ Numbe…⁴
+##   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 ecology      6.16    2014     95 12    Maglia… 3/19/2… 12/1/2…       1       1
+## 2 ecology      6.16    2014     95 12    Soinen  3/19/2… 12/1/2…       6       6
+## 3 ecology      6.16    2014     95 12    Graham… 3/19/2… 12/1/2…       1       1
+## 4 ecology      6.16    2014     95 11    White … 3/19/2… 11/1/2…       9       9
+## 5 ecology      6.16    2014     95 11    Einars… 3/19/2… 11/1/2…      15      12
+## 6 ecology      6.16    2014     95 11    Haav a… 3/19/2… 11/1/2…       2       2
+## # … with 2 more variables: `Twitter reach` &lt;dbl&gt;, woscitations &lt;dbl&gt;, and
+## #   abbreviated variable names ¹​impactfactor, ²​colldate, ³​nbtweets,
+## #   ⁴​`Number of users`
+## # ℹ Use `colnames()` to see all variable names
 ```
 ]
 
@@ -860,6 +861,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

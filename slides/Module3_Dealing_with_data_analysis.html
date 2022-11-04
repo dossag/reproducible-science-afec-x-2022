@@ -4,7 +4,7 @@
     <title>Reproducible science: Module 3</title>
     <meta charset="utf-8" />
     <meta name="author" content="Gbadamassi G.O. Dossa" />
-    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -12,11 +12,21 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Reproducible science: Module 3
+]
+.subtitle[
 ## Dealing with data: Tidyverse
+]
+.author[
 ### <a href="https://scholar.google.com/citations?user=w20AkZcAAAAJ&amp;hl=en">Gbadamassi G.O. Dossa</a>
+]
+.institute[
 ### Xishuangbanna Tropical Botanical Garden, XTBG-CAS
-### 2021/09/25 (updated: 2021-11-02)
+]
+.date[
+### (updated: 2022-11-04)
+]
 
 ---
 
@@ -194,17 +204,6 @@ destfile &lt;- "twitter_cit_data.csv"
 # Apply download.file function in R to download from url
 download.file(url, destfile)
 library(tidyverse)
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 4.1.1
-```
-
-```
-## Warning: package 'readr' was built under R version 4.1.1
-```
-
-```r
 # Read the data file with read_csv() and save with name "citations_raw"
 *citations_raw&lt;-read_csv(file="twitter_cit_data.csv")
 head(citations_raw)
@@ -222,22 +221,25 @@ citations_raw
 ```
 
 ```
-## # A tibble: 1,599 x 12
-##    `Journal identity` `5-year journal im~ `Year published` Volume Issue Authors 
-##    &lt;chr&gt;                            &lt;dbl&gt;            &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   
-##  1 Ecology Letters                   16.7             2014     17 12    Morin e~
-##  2 Ecology Letters                   16.7             2014     17 12    Jucker ~
-##  3 Ecology Letters                   16.7             2014     17 12    Calcagn~
-##  4 Ecology Letters                   16.7             2014     17 11    Segre e~
-##  5 Ecology Letters                   16.7             2014     17 11    Kaufman~
-##  6 Ecology Letters                   16.7             2014     17 10    Nasto e~
-##  7 Ecology Letters                   16.7             2014     17 10    Tschirr~
-##  8 Ecology Letters                   16.7             2014     17 9     Barnech~
-##  9 Ecology Letters                   16.7             2014     17 9     Pinto-S~
-## 10 Ecology Letters                   16.7             2014     17 9     Clough ~
-## # ... with 1,589 more rows, and 6 more variables: Collection date &lt;chr&gt;,
-## #   Publication date &lt;chr&gt;, Number of tweets &lt;dbl&gt;, Number of users &lt;dbl&gt;,
-## #   Twitter reach &lt;dbl&gt;, Number of Web of Science citations &lt;dbl&gt;
+## # A tibble: 1,599 × 12
+##    Journa…¹ 5-yea…² Year …³ Volume Issue Authors Colle…⁴ Publi…⁵ Numbe…⁶ Numbe…⁷
+##    &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Ecology…    16.7    2014     17 12    Morin … 2/1/20… 9/16/2…      18      16
+##  2 Ecology…    16.7    2014     17 12    Jucker… 2/1/20… 10/13/…      15      12
+##  3 Ecology…    16.7    2014     17 12    Calcag… 2/1/20… 10/21/…       5       4
+##  4 Ecology…    16.7    2014     17 11    Segre … 2/1/20… 8/28/2…       9       8
+##  5 Ecology…    16.7    2014     17 11    Kaufma… 2/1/20… 8/28/2…       3       3
+##  6 Ecology…    16.7    2014     17 10    Nasto … 2/2/20… 7/28/2…      27      23
+##  7 Ecology…    16.7    2014     17 10    Tschir… 2/2/20… 8/6/20…       6       6
+##  8 Ecology…    16.7    2014     17 9     Barnec… 2/2/20… 6/17/2…      19      18
+##  9 Ecology…    16.7    2014     17 9     Pinto-… 2/2/20… 6/12/2…      26      23
+## 10 Ecology…    16.7    2014     17 9     Clough… 2/2/20… 7/17/2…      44      42
+## # … with 1,589 more rows, 2 more variables: `Twitter reach` &lt;dbl&gt;,
+## #   `Number of Web of Science citations` &lt;dbl&gt;, and abbreviated variable names
+## #   ¹​`Journal identity`, ²​`5-year journal impact factor`, ³​`Year published`,
+## #   ⁴​`Collection date`, ⁵​`Publication date`, ⁶​`Number of tweets`,
+## #   ⁷​`Number of users`
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]
 
@@ -264,16 +266,18 @@ head(citations_temp,5,6)
 ```
 
 ```
-## # A tibble: 5 x 12
-##   journal   impactfactor pubyear Volume Issue Authors  colldate pubdate nbtweets
-##   &lt;chr&gt;            &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;
-## 1 Ecology ~         16.7    2014     17 12    Morin e~ 2/1/2016 9/16/2~       18
-## 2 Ecology ~         16.7    2014     17 12    Jucker ~ 2/1/2016 10/13/~       15
-## 3 Ecology ~         16.7    2014     17 12    Calcagn~ 2/1/2016 10/21/~        5
-## 4 Ecology ~         16.7    2014     17 11    Segre e~ 2/1/2016 8/28/2~        9
-## 5 Ecology ~         16.7    2014     17 11    Kaufman~ 2/1/2016 8/28/2~        3
-## # ... with 3 more variables: Number of users &lt;dbl&gt;, Twitter reach &lt;dbl&gt;,
-## #   woscitations &lt;dbl&gt;
+## # A tibble: 5 × 12
+##   journal   impac…¹ pubyear Volume Issue Authors colld…² pubdate nbtwe…³ Numbe…⁴
+##   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 Ecology …    16.7    2014     17 12    Morin … 2/1/20… 9/16/2…      18      16
+## 2 Ecology …    16.7    2014     17 12    Jucker… 2/1/20… 10/13/…      15      12
+## 3 Ecology …    16.7    2014     17 12    Calcag… 2/1/20… 10/21/…       5       4
+## 4 Ecology …    16.7    2014     17 11    Segre … 2/1/20… 8/28/2…       9       8
+## 5 Ecology …    16.7    2014     17 11    Kaufma… 2/1/20… 8/28/2…       3       3
+## # … with 2 more variables: `Twitter reach` &lt;dbl&gt;, woscitations &lt;dbl&gt;, and
+## #   abbreviated variable names ¹​impactfactor, ²​colldate, ³​nbtweets,
+## #   ⁴​`Number of users`
+## # ℹ Use `colnames()` to see all variable names
 ```
 ]
 
@@ -293,22 +297,24 @@ janitor::clean_names(citations_raw)
 ```
 
 ```
-## # A tibble: 1,599 x 12
-##    journal_identity x5_year_journal_impa~ year_published volume issue authors   
-##    &lt;chr&gt;                            &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     
-##  1 Ecology Letters                   16.7           2014     17 12    Morin et ~
-##  2 Ecology Letters                   16.7           2014     17 12    Jucker et~
-##  3 Ecology Letters                   16.7           2014     17 12    Calcagno ~
-##  4 Ecology Letters                   16.7           2014     17 11    Segre et ~
-##  5 Ecology Letters                   16.7           2014     17 11    Kaufman e~
-##  6 Ecology Letters                   16.7           2014     17 10    Nasto et ~
-##  7 Ecology Letters                   16.7           2014     17 10    Tschirren~
-##  8 Ecology Letters                   16.7           2014     17 9     Barnechi ~
-##  9 Ecology Letters                   16.7           2014     17 9     Pinto-San~
-## 10 Ecology Letters                   16.7           2014     17 9     Clough et~
-## # ... with 1,589 more rows, and 6 more variables: collection_date &lt;chr&gt;,
-## #   publication_date &lt;chr&gt;, number_of_tweets &lt;dbl&gt;, number_of_users &lt;dbl&gt;,
-## #   twitter_reach &lt;dbl&gt;, number_of_web_of_science_citations &lt;dbl&gt;
+## # A tibble: 1,599 × 12
+##    journa…¹ x5_ye…² year_…³ volume issue authors colle…⁴ publi…⁵ numbe…⁶ numbe…⁷
+##    &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Ecology…    16.7    2014     17 12    Morin … 2/1/20… 9/16/2…      18      16
+##  2 Ecology…    16.7    2014     17 12    Jucker… 2/1/20… 10/13/…      15      12
+##  3 Ecology…    16.7    2014     17 12    Calcag… 2/1/20… 10/21/…       5       4
+##  4 Ecology…    16.7    2014     17 11    Segre … 2/1/20… 8/28/2…       9       8
+##  5 Ecology…    16.7    2014     17 11    Kaufma… 2/1/20… 8/28/2…       3       3
+##  6 Ecology…    16.7    2014     17 10    Nasto … 2/2/20… 7/28/2…      27      23
+##  7 Ecology…    16.7    2014     17 10    Tschir… 2/2/20… 8/6/20…       6       6
+##  8 Ecology…    16.7    2014     17 9     Barnec… 2/2/20… 6/17/2…      19      18
+##  9 Ecology…    16.7    2014     17 9     Pinto-… 2/2/20… 6/12/2…      26      23
+## 10 Ecology…    16.7    2014     17 9     Clough… 2/2/20… 7/17/2…      44      42
+## # … with 1,589 more rows, 2 more variables: twitter_reach &lt;dbl&gt;,
+## #   number_of_web_of_science_citations &lt;dbl&gt;, and abbreviated variable names
+## #   ¹​journal_identity, ²​x5_year_journal_impact_factor, ³​year_published,
+## #   ⁴​collection_date, ⁵​publication_date, ⁶​number_of_tweets, ⁷​number_of_users
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]
 
@@ -327,21 +333,23 @@ citations
 ```
 
 ```
-## # A tibble: 1,599 x 12
-*##    journal  impactfactor pubyear Volume Issue Authors  colldate pubdate nbtweets
-*##    &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;
-##  1 Ecology~         16.7    2014     17 12    Morin e~ 2/1/2016 9/16/2~       18
-##  2 Ecology~         16.7    2014     17 12    Jucker ~ 2/1/2016 10/13/~       15
-##  3 Ecology~         16.7    2014     17 12    Calcagn~ 2/1/2016 10/21/~        5
-##  4 Ecology~         16.7    2014     17 11    Segre e~ 2/1/2016 8/28/2~        9
-##  5 Ecology~         16.7    2014     17 11    Kaufman~ 2/1/2016 8/28/2~        3
-##  6 Ecology~         16.7    2014     17 10    Nasto e~ 2/2/2016 7/28/2~       27
-##  7 Ecology~         16.7    2014     17 10    Tschirr~ 2/2/2016 8/6/20~        6
-##  8 Ecology~         16.7    2014     17 9     Barnech~ 2/2/2016 6/17/2~       19
-##  9 Ecology~         16.7    2014     17 9     Pinto-S~ 2/2/2016 6/12/2~       26
-## 10 Ecology~         16.7    2014     17 9     Clough ~ 2/2/2016 7/17/2~       44
-## # ... with 1,589 more rows, and 3 more variables: Number of users &lt;dbl&gt;,
-## #   Twitter reach &lt;dbl&gt;, woscitations &lt;dbl&gt;
+## # A tibble: 1,599 × 12
+*##    journal  impac…¹ pubyear Volume Issue Authors colld…² pubdate nbtwe…³ Numbe…⁴
+*##    &lt;fct&gt;      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Ecology…    16.7    2014     17 12    Morin … 2/1/20… 9/16/2…      18      16
+##  2 Ecology…    16.7    2014     17 12    Jucker… 2/1/20… 10/13/…      15      12
+##  3 Ecology…    16.7    2014     17 12    Calcag… 2/1/20… 10/21/…       5       4
+##  4 Ecology…    16.7    2014     17 11    Segre … 2/1/20… 8/28/2…       9       8
+##  5 Ecology…    16.7    2014     17 11    Kaufma… 2/1/20… 8/28/2…       3       3
+##  6 Ecology…    16.7    2014     17 10    Nasto … 2/2/20… 7/28/2…      27      23
+##  7 Ecology…    16.7    2014     17 10    Tschir… 2/2/20… 8/6/20…       6       6
+##  8 Ecology…    16.7    2014     17 9     Barnec… 2/2/20… 6/17/2…      19      18
+##  9 Ecology…    16.7    2014     17 9     Pinto-… 2/2/20… 6/12/2…      26      23
+## 10 Ecology…    16.7    2014     17 9     Clough… 2/2/20… 7/17/2…      44      42
+## # … with 1,589 more rows, 2 more variables: `Twitter reach` &lt;dbl&gt;,
+## #   woscitations &lt;dbl&gt;, and abbreviated variable names ¹​impactfactor,
+## #   ²​colldate, ³​nbtweets, ⁴​`Number of users`
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]
 
@@ -429,17 +437,19 @@ head(citations)
 ```
 
 ```
-## # A tibble: 6 x 12
-##   journal   impactfactor pubyear Volume Issue Authors  colldate pubdate nbtweets
-##   &lt;fct&gt;            &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;
-## 1 Ecology ~         16.7    2014     17 12    Morin e~ 2/1/2016 9/16/2~       18
-## 2 Ecology ~         16.7    2014     17 12    Jucker ~ 2/1/2016 10/13/~       15
-## 3 Ecology ~         16.7    2014     17 12    Calcagn~ 2/1/2016 10/21/~        5
-## 4 Ecology ~         16.7    2014     17 11    Segre e~ 2/1/2016 8/28/2~        9
-## 5 Ecology ~         16.7    2014     17 11    Kaufman~ 2/1/2016 8/28/2~        3
-## 6 Ecology ~         16.7    2014     17 10    Nasto e~ 2/2/2016 7/28/2~       27
-## # ... with 3 more variables: Number of users &lt;dbl&gt;, Twitter reach &lt;dbl&gt;,
-## #   woscitations &lt;dbl&gt;
+## # A tibble: 6 × 12
+##   journal   impac…¹ pubyear Volume Issue Authors colld…² pubdate nbtwe…³ Numbe…⁴
+##   &lt;fct&gt;       &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 Ecology …    16.7    2014     17 12    Morin … 2/1/20… 9/16/2…      18      16
+## 2 Ecology …    16.7    2014     17 12    Jucker… 2/1/20… 10/13/…      15      12
+## 3 Ecology …    16.7    2014     17 12    Calcag… 2/1/20… 10/21/…       5       4
+## 4 Ecology …    16.7    2014     17 11    Segre … 2/1/20… 8/28/2…       9       8
+## 5 Ecology …    16.7    2014     17 11    Kaufma… 2/1/20… 8/28/2…       3       3
+## 6 Ecology …    16.7    2014     17 10    Nasto … 2/2/20… 7/28/2…      27      23
+## # … with 2 more variables: `Twitter reach` &lt;dbl&gt;, woscitations &lt;dbl&gt;, and
+## #   abbreviated variable names ¹​impactfactor, ²​colldate, ³​nbtweets,
+## #   ⁴​`Number of users`
+## # ℹ Use `colnames()` to see all variable names
 ```
 ]
 
@@ -463,17 +473,19 @@ head(citations2)
 ```
 
 ```
-## # A tibble: 6 x 12
-##   journal   impactfactor pubyear Volume Issue Authors  colldate pubdate nbtweets
-##   &lt;fct&gt;            &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;
-## 1 Ecology ~         16.7    2014     17 12    Morin e~ 2/1/2016 9/16/2~       18
-## 2 Ecology ~         16.7    2014     17 12    Jucker ~ 2/1/2016 10/13/~       15
-## 3 Ecology ~         16.7    2014     17 12    Calcagn~ 2/1/2016 10/21/~        5
-## 4 Ecology ~         16.7    2014     17 11    Segre e~ 2/1/2016 8/28/2~        9
-## 5 Ecology ~         16.7    2014     17 11    Kaufman~ 2/1/2016 8/28/2~        3
-## 6 Ecology ~         16.7    2014     17 10    Nasto e~ 2/2/2016 7/28/2~       27
-## # ... with 3 more variables: Number of users &lt;dbl&gt;, Twitter reach &lt;dbl&gt;,
-## #   woscitations &lt;dbl&gt;
+## # A tibble: 6 × 12
+##   journal   impac…¹ pubyear Volume Issue Authors colld…² pubdate nbtwe…³ Numbe…⁴
+##   &lt;fct&gt;       &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 Ecology …    16.7    2014     17 12    Morin … 2/1/20… 9/16/2…      18      16
+## 2 Ecology …    16.7    2014     17 12    Jucker… 2/1/20… 10/13/…      15      12
+## 3 Ecology …    16.7    2014     17 12    Calcag… 2/1/20… 10/21/…       5       4
+## 4 Ecology …    16.7    2014     17 11    Segre … 2/1/20… 8/28/2…       9       8
+## 5 Ecology …    16.7    2014     17 11    Kaufma… 2/1/20… 8/28/2…       3       3
+## 6 Ecology …    16.7    2014     17 10    Nasto … 2/2/20… 7/28/2…      27      23
+## # … with 2 more variables: `Twitter reach` &lt;dbl&gt;, woscitations &lt;dbl&gt;, and
+## #   abbreviated variable names ¹​impactfactor, ²​colldate, ³​nbtweets,
+## #   ⁴​`Number of users`
+## # ℹ Use `colnames()` to see all variable names
 ```
 ]
 
@@ -512,7 +524,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 1,599 x 3
+## # A tibble: 1,599 × 3
 ##    journal         impactfactor nbtweets
 ##    &lt;fct&gt;                  &lt;dbl&gt;    &lt;dbl&gt;
 ##  1 Ecology Letters         16.7       18
@@ -525,7 +537,8 @@ citations %&gt;%
 ##  8 Ecology Letters         16.7       19
 ##  9 Ecology Letters         16.7       26
 ## 10 Ecology Letters         16.7       44
-## # ... with 1,589 more rows
+## # … with 1,589 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 
@@ -547,21 +560,22 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 1,599 x 9
-##    journal     impactfactor pubyear colldate pubdate   nbtweets `Number of user~
-##    &lt;fct&gt;              &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;        &lt;dbl&gt;            &lt;dbl&gt;
-##  1 Ecology Le~         16.7    2014 2/1/2016 9/16/2014       18               16
-##  2 Ecology Le~         16.7    2014 2/1/2016 10/13/20~       15               12
-##  3 Ecology Le~         16.7    2014 2/1/2016 10/21/20~        5                4
-##  4 Ecology Le~         16.7    2014 2/1/2016 8/28/2014        9                8
-##  5 Ecology Le~         16.7    2014 2/1/2016 8/28/2014        3                3
-##  6 Ecology Le~         16.7    2014 2/2/2016 7/28/2014       27               23
-##  7 Ecology Le~         16.7    2014 2/2/2016 8/6/2014         6                6
-##  8 Ecology Le~         16.7    2014 2/2/2016 6/17/2014       19               18
-##  9 Ecology Le~         16.7    2014 2/2/2016 6/12/2014       26               23
-## 10 Ecology Le~         16.7    2014 2/2/2016 7/17/2014       44               42
-## # ... with 1,589 more rows, and 2 more variables: Twitter reach &lt;dbl&gt;,
-## #   woscitations &lt;dbl&gt;
+## # A tibble: 1,599 × 9
+##    journal       impac…¹ pubyear colld…² pubdate nbtwe…³ Numbe…⁴ Twitt…⁵ wosci…⁶
+##    &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Ecology Lett…    16.7    2014 2/1/20… 9/16/2…      18      16   29877       3
+##  2 Ecology Lett…    16.7    2014 2/1/20… 10/13/…      15      12    5997       8
+##  3 Ecology Lett…    16.7    2014 2/1/20… 10/21/…       5       4    1667       1
+##  4 Ecology Lett…    16.7    2014 2/1/20… 8/28/2…       9       8    3482       2
+##  5 Ecology Lett…    16.7    2014 2/1/20… 8/28/2…       3       3    1329       1
+##  6 Ecology Lett…    16.7    2014 2/2/20… 7/28/2…      27      23   41906       9
+##  7 Ecology Lett…    16.7    2014 2/2/20… 8/6/20…       6       6   12223       6
+##  8 Ecology Lett…    16.7    2014 2/2/20… 6/17/2…      19      18   22020       9
+##  9 Ecology Lett…    16.7    2014 2/2/20… 6/12/2…      26      23   23003       5
+## 10 Ecology Lett…    16.7    2014 2/2/20… 7/17/2…      44      42  131788       4
+## # … with 1,589 more rows, and abbreviated variable names ¹​impactfactor,
+## #   ²​colldate, ³​nbtweets, ⁴​`Number of users`, ⁵​`Twitter reach`, ⁶​woscitations
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 
@@ -587,7 +601,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 1,599 x 6
+## # A tibble: 1,599 × 6
 ##    journal         impactfactor nbtweets month day   year 
 ##    &lt;fct&gt;                  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
 ##  1 Ecology Letters         16.7       18 9     16    2014 
@@ -600,7 +614,8 @@ citations %&gt;%
 ##  8 Ecology Letters         16.7       19 6     17    2014 
 ##  9 Ecology Letters         16.7       26 6     12    2014 
 ## 10 Ecology Letters         16.7       44 7     17    2014 
-## # ... with 1,589 more rows
+## # … with 1,589 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 ---
@@ -619,7 +634,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 1,599 x 5
+## # A tibble: 1,599 × 5
 ##    journal         impactfactor nbtweets pubdate    colldate  
 ##    &lt;fct&gt;                  &lt;dbl&gt;    &lt;dbl&gt; &lt;date&gt;     &lt;date&gt;    
 ##  1 Ecology Letters         16.7       18 2014-09-16 2016-02-01
@@ -632,7 +647,8 @@ citations %&gt;%
 ##  8 Ecology Letters         16.7       19 2014-06-17 2016-02-02
 ##  9 Ecology Letters         16.7       26 2014-06-12 2016-02-02
 ## 10 Ecology Letters         16.7       44 2014-07-17 2016-02-02
-## # ... with 1,589 more rows
+## # … with 1,589 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 ---
@@ -650,7 +666,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 1,599 x 5
+## # A tibble: 1,599 × 5
 ##    journal         impactfactor pubdate    colldate pubyear2
 ##    &lt;fct&gt;                  &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;       &lt;dbl&gt;
 ##  1 Ecology Letters         16.7 2014-09-16 2/1/2016     2014
@@ -663,7 +679,8 @@ citations %&gt;%
 ##  8 Ecology Letters         16.7 2014-06-17 2/2/2016     2014
 ##  9 Ecology Letters         16.7 2014-06-12 2/2/2016     2014
 ## 10 Ecology Letters         16.7 2014-07-17 2/2/2016     2014
-## # ... with 1,589 more rows
+## # … with 1,589 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 ---
@@ -749,21 +766,23 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 1,280 x 12
-##    journal  impactfactor pubyear Volume Issue Authors  colldate pubdate nbtweets
-##    &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;
-##  1 Ecology~         16.7    2014     17 12    Morin e~ 2/1/2016 9/16/2~       18
-##  2 Ecology~         16.7    2014     17 12    Jucker ~ 2/1/2016 10/13/~       15
-##  3 Ecology~         16.7    2014     17 12    Calcagn~ 2/1/2016 10/21/~        5
-##  4 Ecology~         16.7    2014     17 11    Segre e~ 2/1/2016 8/28/2~        9
-##  5 Ecology~         16.7    2014     17 11    Kaufman~ 2/1/2016 8/28/2~        3
-##  6 Ecology~         16.7    2014     17 10    Nasto e~ 2/2/2016 7/28/2~       27
-##  7 Ecology~         16.7    2014     17 10    Tschirr~ 2/2/2016 8/6/20~        6
-##  8 Ecology~         16.7    2014     17 9     Barnech~ 2/2/2016 6/17/2~       19
-##  9 Ecology~         16.7    2014     17 9     Pinto-S~ 2/2/2016 6/12/2~       26
-## 10 Ecology~         16.7    2014     17 9     Clough ~ 2/2/2016 7/17/2~       44
-## # ... with 1,270 more rows, and 3 more variables: Number of users &lt;dbl&gt;,
-## #   Twitter reach &lt;dbl&gt;, woscitations &lt;dbl&gt;
+## # A tibble: 1,280 × 12
+##    journal  impac…¹ pubyear Volume Issue Authors colld…² pubdate nbtwe…³ Numbe…⁴
+##    &lt;fct&gt;      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Ecology…    16.7    2014     17 12    Morin … 2/1/20… 9/16/2…      18      16
+##  2 Ecology…    16.7    2014     17 12    Jucker… 2/1/20… 10/13/…      15      12
+##  3 Ecology…    16.7    2014     17 12    Calcag… 2/1/20… 10/21/…       5       4
+##  4 Ecology…    16.7    2014     17 11    Segre … 2/1/20… 8/28/2…       9       8
+##  5 Ecology…    16.7    2014     17 11    Kaufma… 2/1/20… 8/28/2…       3       3
+##  6 Ecology…    16.7    2014     17 10    Nasto … 2/2/20… 7/28/2…      27      23
+##  7 Ecology…    16.7    2014     17 10    Tschir… 2/2/20… 8/6/20…       6       6
+##  8 Ecology…    16.7    2014     17 9     Barnec… 2/2/20… 6/17/2…      19      18
+##  9 Ecology…    16.7    2014     17 9     Pinto-… 2/2/20… 6/12/2…      26      23
+## 10 Ecology…    16.7    2014     17 9     Clough… 2/2/20… 7/17/2…      44      42
+## # … with 1,270 more rows, 2 more variables: `Twitter reach` &lt;dbl&gt;,
+## #   woscitations &lt;dbl&gt;, and abbreviated variable names ¹​impactfactor,
+## #   ²​colldate, ³​nbtweets, ⁴​`Number of users`
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]
 ---
@@ -778,7 +797,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 1,280 x 1
+## # A tibble: 1,280 × 1
 ##    Authors            
 ##    &lt;chr&gt;              
 ##  1 Morin et al        
@@ -791,7 +810,8 @@ citations %&gt;%
 ##  8 Barnechi et al     
 ##  9 Pinto-Sanchez et al
 ## 10 Clough et al       
-## # ... with 1,270 more rows
+## # … with 1,270 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 ---
@@ -806,7 +826,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 319 x 1
+## # A tibble: 319 × 1
 ##    Authors           
 ##    &lt;chr&gt;             
 ##  1 Neutle and Thorne 
@@ -819,7 +839,8 @@ citations %&gt;%
 ##  8 Locey and White   
 ##  9 Quintero and Weins
 ## 10 Lesser and Jackson
-## # ... with 309 more rows
+## # … with 309 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 ---
@@ -854,21 +875,23 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 77 x 12
-##    journal  impactfactor pubyear Volume Issue  Authors colldate pubdate nbtweets
-##    &lt;fct&gt;           &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;
-##  1 Molecul~         4.9     2014     14 6      Gautier 2/27/20~ 5/14/2~        2
-##  2 Molecul~         4.9     2014     14 5      Gambel~ 2/27/20~ 3/7/20~        7
-##  3 Molecul~         4.9     2014     14 4      Kekkon~ 2/27/20~ 3/10/2~        4
-##  4 Molecul~         4.9     2014     14 3      Bhatta~ 2/27/20~ 12/8/2~        0
-##  5 Molecul~         4.9     2014     14 1      Christ~ 2/28/20~ 10/25/~        0
-##  6 Molecul~         4.9     2013     13 4      Villar~ 2/28/20~ 5/2/20~        0
-##  7 Molecul~         4.9     2013     13 4      Wang    2/28/20~ 4/25/2~        0
-##  8 Molecul~         4.9     2012     12 1      Joly    2/28/20~ 9/7/20~        3
-##  9 Animal ~         3.21    2014     17 6      Plavsic 2/9/2016 4/17/2~        9
-## 10 Animal ~         3.21    2014     17 Suppl~ Knox a~ 2/11/20~ 11/13/~        1
-## # ... with 67 more rows, and 3 more variables: Number of users &lt;dbl&gt;,
-## #   Twitter reach &lt;dbl&gt;, woscitations &lt;dbl&gt;
+## # A tibble: 77 × 12
+##    journal  impac…¹ pubyear Volume Issue Authors colld…² pubdate nbtwe…³ Numbe…⁴
+##    &lt;fct&gt;      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Molecul…    4.9     2014     14 6     Gautier 2/27/2… 5/14/2…       2       2
+##  2 Molecul…    4.9     2014     14 5     Gambel… 2/27/2… 3/7/20…       7       5
+##  3 Molecul…    4.9     2014     14 4     Kekkon… 2/27/2… 3/10/2…       4       4
+##  4 Molecul…    4.9     2014     14 3     Bhatta… 2/27/2… 12/8/2…       0       0
+##  5 Molecul…    4.9     2014     14 1     Christ… 2/28/2… 10/25/…       0       0
+##  6 Molecul…    4.9     2013     13 4     Villar… 2/28/2… 5/2/20…       0       0
+##  7 Molecul…    4.9     2013     13 4     Wang    2/28/2… 4/25/2…       0       0
+##  8 Molecul…    4.9     2012     12 1     Joly    2/28/2… 9/7/20…       3       3
+##  9 Animal …    3.21    2014     17 6     Plavsic 2/9/20… 4/17/2…       9       9
+## 10 Animal …    3.21    2014     17 Supp… Knox a… 2/11/2… 11/13/…       1       1
+## # … with 67 more rows, 2 more variables: `Twitter reach` &lt;dbl&gt;,
+## #   woscitations &lt;dbl&gt;, and abbreviated variable names ¹​impactfactor,
+## #   ²​colldate, ³​nbtweets, ⁴​`Number of users`
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]
 ---
@@ -884,7 +907,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 1,599 x 1
+## # A tibble: 1,599 × 1
 ##    authors_lowercase  
 ##    &lt;chr&gt;              
 ##  1 morin et al        
@@ -897,7 +920,8 @@ citations %&gt;%
 ##  8 barnechi et al     
 ##  9 pinto-sanchez et al
 ## 10 clough et al       
-## # ... with 1,589 more rows
+## # … with 1,589 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 ---
@@ -915,7 +939,7 @@ citations%&gt;%
 ```
 
 ```
-## # A tibble: 5 x 1
+## # A tibble: 5 × 1
 ##   journal                     
 ##   &lt;chr&gt;                       
 ## 1 EcologyLetters              
@@ -943,7 +967,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 20 x 2
+## # A tibble: 20 × 2
 ##    journal                              n
 ##    &lt;fct&gt;                            &lt;int&gt;
 ##  1 New Phytologist                    144
@@ -979,7 +1003,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 59 x 3
+## # A tibble: 59 × 3
 ##    journal                     pubyear     n
 ##    &lt;fct&gt;                         &lt;dbl&gt; &lt;int&gt;
 ##  1 Animal Conservation            2012    18
@@ -992,7 +1016,8 @@ citations %&gt;%
 ##  8 Diversity and Distributions    2013    33
 ##  9 Diversity and Distributions    2014    36
 ## 10 Ecological Applications        2012    24
-## # ... with 49 more rows
+## # … with 49 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 ---
@@ -1006,7 +1031,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 20 x 2
+## # A tibble: 20 × 2
 ##    journal                              n
 ##    &lt;fct&gt;                            &lt;dbl&gt;
 ##  1 Ecology Letters                   1538
@@ -1044,7 +1069,7 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 20 x 2
+## # A tibble: 20 × 2
 ##    journal                          avg_tweets
 ##    &lt;fct&gt;                                 &lt;dbl&gt;
 ##  1 Animal Conservation                   12.4 
@@ -1084,7 +1109,7 @@ head(arrangedat, 10)
 ```
 
 ```
-## # A tibble: 10 x 2
+## # A tibble: 10 × 2
 ##    journal                          avg_tweets
 ##    &lt;fct&gt;                                 &lt;dbl&gt;
 ##  1 Journal of Applied Ecology            18.7 
@@ -1118,30 +1143,31 @@ citations %&gt;%
 ```
 
 ```
-## # A tibble: 20 x 8
-##    journal impactfactor pubyear Volume nbtweets `Number of user~ `Twitter reach`
-##    &lt;fct&gt;          &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;
-##  1 Animal~         3.21   2013.  16.5     12.4              9.71          28345.
-##  2 Conser~         6.4    2013.   6.02    10.2              8.85          23234.
-##  3 Divers~         5.4    2013   19        1.90             1.77           2350.
-##  4 Ecolog~         5.06   2013   23        2.60             2.5            5727.
-##  5 Ecology         6.16   2013   94        3.10             2.87           6176.
-##  6 Ecolog~        16.7    2013.  16.0     14.5             14.0           44748.
-##  7 Evolut~         5.25   2013   67        3.10             2.93           7762.
-##  8 Evolut~         4.6    2013.   6.05     3.22             3.07          13185.
-##  9 Fish a~         8.1    2013   14        7.25             6.19          12097.
-## 10 Functi~         5.28   2013   27        2.87             2.74           3809.
-## 11 Global~         8.7    2013   19        5.68             4.94           9652.
-## 12 Global~         7.18   2013   22        3.51             3.15           8995.
-## 13 Journa~         5.32   2013.  81.9      5.98             5.59          36112.
-## 14 Journa~         5.93   2013   50       18.7             15.8           43839.
-## 15 Journa~         4.59   2013   40        1.94             1.86          11632.
-## 16 Limnol~         4.4    2013   58        0                0                 0 
-## 17 Mammal~         4.3    2013.  43.0      5.35             4.39          10485.
-## 18 Method~         7.39   2013.   4.2      7.77             7.14          15867.
-## 19 Molecu~         4.9    2013   13        2.57             2.24          19844.
-## 20 New Ph~         7.8    2013  198.       3.53             3.15           6340.
-## # ... with 1 more variable: woscitations &lt;dbl&gt;
+## # A tibble: 20 × 8
+##    journal                impac…¹ pubyear Volume nbtwe…² Numbe…³ Twitt…⁴ wosci…⁵
+##    &lt;fct&gt;                    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Animal Conservation       3.21   2013.  16.5    12.4     9.71  28345.   4.43 
+##  2 Conservation Letters      6.4    2013.   6.02   10.2     8.85  23234.   9.30 
+##  3 Diversity and Distrib…    5.4    2013   19       1.90    1.77   2350.  10.2  
+##  4 Ecological Applicatio…    5.06   2013   23       2.60    2.5    5727.  10.7  
+##  5 Ecology                   6.16   2013   94       3.10    2.87   6176.  11.1  
+##  6 Ecology Letters          16.7    2013.  16.0    14.5    14.0   44748.  20.6  
+##  7 Evolution                 5.25   2013   67       3.10    2.93   7762.  12.6  
+##  8 Evolutionary Applicat…    4.6    2013.   6.05    3.22    3.07  13185.   8.18 
+##  9 Fish and Fisheries        8.1    2013   14       7.25    6.19  12097.  18.0  
+## 10 Functional Ecology        5.28   2013   27       2.87    2.74   3809.  11.1  
+## 11 Global Change Biology     8.7    2013   19       5.68    4.94   9652.  19.7  
+## 12 Global Ecology and Bi…    7.18   2013   22       3.51    3.15   8995.  15.5  
+## 13 Journal of Animal Eco…    5.32   2013.  81.9     5.98    5.59  36112.  11.5  
+## 14 Journal of Applied Ec…    5.93   2013   50      18.7    15.8   43839.   9.33 
+## 15 Journal of Biogeograp…    4.59   2013   40       1.94    1.86  11632.  10.9  
+## 16 Limnology and Oceanog…    4.4    2013   58       0       0         0    8.04 
+## 17 Mammal Review             4.3    2013.  43.0     5.35    4.39  10485.  10.5  
+## 18 Methods in Ecology an…    7.39   2013.   4.2     7.77    7.14  15867.   0.733
+## 19 Molecular Ecology Res…    4.9    2013   13       2.57    2.24  19844.   9.89 
+## 20 New Phytologist           7.8    2013  198.      3.53    3.15   6340.  16.7  
+## # … with abbreviated variable names ¹​impactfactor, ²​nbtweets,
+## #   ³​`Number of users`, ⁴​`Twitter reach`, ⁵​woscitations
 ```
 ]
 
@@ -1221,6 +1247,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

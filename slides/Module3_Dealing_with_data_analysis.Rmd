@@ -3,7 +3,7 @@ title: "Reproducible science: Module 3"
 subtitle: "Dealing with data: Tidyverse"
 author: "[Gbadamassi G.O. Dossa](https://scholar.google.com/citations?user=w20AkZcAAAAJ&hl=en)"
 institute: "Xishuangbanna Tropical Botanical Garden, XTBG-CAS"
-date: "2021/09/25 (updated: `r Sys.Date()`)"
+date: "(updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -192,7 +192,7 @@ class: center
 
 # Import data
 .left[
-```{r, twittercsv，out.width="80%", message=FALSE, Warnings=FALSE, results="hide"}
+```{r, twittercsv,out.width="80%", message=FALSE, Warnings=FALSE, results="hide"}
 
 # Set the url from where to download the data
 url<-"https://doi.org/10.1371/journal.pone.0166570.s001"
@@ -212,7 +212,7 @@ class: center
 # Import data
 
 .left[
-```{r, datoverview，out.width="80%", include=TRUE, Warnings=FALSE, results="hold"}
+```{r, datoverview,out.width="80%", include=TRUE, Warnings=FALSE, results="hold"}
 citations_raw
 ```
 ]
@@ -250,6 +250,7 @@ To clean columns, use function *clean_names()* from the package janitor from it 
 
 
 ```{r, cleancol}
+
 janitor::clean_names(citations_raw)
 ```
 ]

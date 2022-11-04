@@ -71,7 +71,7 @@ Attendees are required to install the following software beforehand
 7- Install the following `R` packages: `tidyverse`, `sf`, `emo`, `janitor`, `palmerpenguins`, `usethis` and `lubridate.` You can install them all at once by running the following code in the `R` command line:
 
 ```{r eval = FALSE, echo = TRUE}
-install.packages(c("tidyverse", "sf", "emo", "janitor", "palmerpenguins", "usethis", "lubridate"))
+install.packages(c("tidyverse", "sf", "emo","snakecase", "janitor", "palmerpenguins", "usethis", "lubridate"))
 ```
 
 Below are books you can read at your spare time not required to read before the course.
@@ -90,8 +90,8 @@ Also kindly read the two following documents prior to start of the workshop: (i)
 
 ## Corrections {.appendix}
 
-If you see mistakes or want to suggest changes, please [create an issue](https://github.com/dossag/reproducible-science-afec-X-2021/issues) on the source repository.
+If you see mistakes or want to suggest changes, please [create an issue](https://github.com/dossag/reproducible-science-afec-X-2022/issues) on the source repository.
 
 ## Reuse {.appendix}
 
-Text and figures are licensed under Creative Commons Attribution [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Any computer code (R, HTML, CSS, etc.) in slides and worksheets, including in slide and worksheet sources, is also licensed under [MIT](https://github.com/dossag/reproducible-science-afec-XTBG-2021/blob/master/LICENSE.md). 
+Text and figures are licensed under Creative Commons Attribution [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Any computer code (R, HTML, CSS, etc.) in slides and worksheets, including in slide and worksheet sources, is also licensed under [MIT](https://github.com/dossag/reproducible-science-afec-XTBG-2022/blob/master/LICENSE.md). 
