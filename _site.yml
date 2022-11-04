@@ -41,7 +41,7 @@ navbar:
         - text: "Exercise 1: Tidyverse data manipulation"
           href: Exercise_1_Tidyverse_Data_manipulation.html
         - text: "Exercise 1: Tidyverse data manipulation - Solutions"
-          href: 
+          href: 1_datamanipulation_solution.html
         - text: "Exercise 2: Tidyverse ggplot2 data visualisation"
           href: Exercise_2_datavisualisation.html
         - text: "Exercise 2: Tidyverse ggplot2 data visualisation - Solutions"

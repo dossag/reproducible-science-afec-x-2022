@@ -144,7 +144,7 @@ class: center
 4. Communicate]
 <small>If these steps happen at multiple software then errors are highly inevitable.</small>
 
-```{r, echo=FALSE,out.width='60%', fig.align='center', fig.cap='Reproducibilit equals effecient use of time', include=TRUE, results="hold"}
+```{r, echo=FALSE,out.width='60%', fig.align='center', fig.cap='Reproducibility equals effecient use of time', include=TRUE, results="hold"}
 knitr::include_graphics('img/workflow in data analysis.png')
 ```
 
@@ -235,7 +235,7 @@ citations_temp <- rename(citations_raw,
        pubdate = 'Publication date',
        nbtweets = 'Number of tweets',
        woscitations = 'Number of Web of Science citations')
-head(citations_temp,5,6)
+head(citations_temp, c(3,6)) # You can head (dataframe, c(x,y)) where x = number of rows and y= number columns to visualize
 ```
 ]
 
