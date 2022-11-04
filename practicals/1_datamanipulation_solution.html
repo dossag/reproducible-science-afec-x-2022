@@ -4,7 +4,7 @@
     <title>Data manipulation - solutions</title>
     <meta charset="utf-8" />
     <meta name="author" content="Gbadamassi G.O. Dossa" />
-    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="slides-theme.css" type="text/css" />
   </head>
@@ -12,9 +12,15 @@
     <textarea id="source">
 class: center, middle, title-slide
 
+.title[
 # Data manipulation - solutions
+]
+.author[
 ### <a href="https://scholar.google.com/citations?user=w20AkZcAAAAJ&amp;hl=en"><strong><em>Gbadamassi G.O. Dossa</em></strong></a>
-### last updated: 2021-10-31
+]
+.date[
+### last updated: 2022-11-04
+]
 
 ---
 
@@ -43,20 +49,22 @@ penguins # display data
 ```
 
 ```
-## # A tibble: 344 x 8
-##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
-##  1 Adelie  Torgersen           39.1          18.7               181        3750
-##  2 Adelie  Torgersen           39.5          17.4               186        3800
-##  3 Adelie  Torgersen           40.3          18                 195        3250
-##  4 Adelie  Torgersen           NA            NA                  NA          NA
-##  5 Adelie  Torgersen           36.7          19.3               193        3450
-##  6 Adelie  Torgersen           39.3          20.6               190        3650
-##  7 Adelie  Torgersen           38.9          17.8               181        3625
-##  8 Adelie  Torgersen           39.2          19.6               195        4675
-##  9 Adelie  Torgersen           34.1          18.1               193        3475
-## 10 Adelie  Torgersen           42            20.2               190        4250
-## # ... with 334 more rows, and 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;
+## # A tibble: 344 × 8
+##    species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year
+##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+##  1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007
+##  2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007
+##  3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007
+##  4 Adelie  Torgersen           NA            NA           NA      NA &lt;NA&gt;   2007
+##  5 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007
+##  6 Adelie  Torgersen           39.3          20.6        190    3650 male   2007
+##  7 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007
+##  8 Adelie  Torgersen           39.2          19.6        195    4675 male   2007
+##  9 Adelie  Torgersen           34.1          18.1        193    3475 &lt;NA&gt;   2007
+## 10 Adelie  Torgersen           42            20.2        190    4250 &lt;NA&gt;   2007
+## # … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,
+## #   ²​body_mass_g
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 
@@ -73,14 +81,14 @@ penguins %&gt;% glimpse() # display data
 ```
 ## Rows: 344
 ## Columns: 8
-## $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel~
-## $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse~
-## $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, ~
-## $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, ~
-## $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186~
-## $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, ~
-## $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male~
-## $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007~
+## $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+## $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
+## $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+## $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+## $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+## $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+## $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…
+## $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
 ```
 ]
 
@@ -108,7 +116,7 @@ dat # nb of penguins
 ```
 
 ```
-## # A tibble: 333 x 4
+## # A tibble: 333 × 4
 ##    species island    bill_length_mm body_mass_g
 ##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;       &lt;int&gt;
 ##  1 Adelie  Torgersen           39.1        3750
@@ -121,7 +129,8 @@ dat # nb of penguins
 ##  8 Adelie  Torgersen           41.1        3200
 ##  9 Adelie  Torgersen           38.6        3800
 ## 10 Adelie  Torgersen           34.6        4400
-## # ... with 323 more rows
+## # … with 323 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 
@@ -136,7 +145,7 @@ dat %&gt;% count(species)
 ```
 
 ```
-## # A tibble: 3 x 2
+## # A tibble: 3 × 2
 ##   species       n
 ##   &lt;fct&gt;     &lt;int&gt;
 ## 1 Adelie      146
@@ -154,7 +163,7 @@ dat %&gt;% count(species, sort = TRUE) # idem, arranged by n
 ```
 
 ```
-## # A tibble: 3 x 2
+## # A tibble: 3 × 2
 ##   species       n
 ##   &lt;fct&gt;     &lt;int&gt;
 ## 1 Adelie      146
@@ -173,7 +182,7 @@ dat %&gt;% count(island) # nb of island, and penguins per island
 ```
 
 ```
-## # A tibble: 3 x 2
+## # A tibble: 3 × 2
 ##   island        n
 ##   &lt;fct&gt;     &lt;int&gt;
 ## 1 Biscoe      163
@@ -193,7 +202,7 @@ dat %&gt;% count(species, island)
 ```
 
 ```
-## # A tibble: 5 x 3
+## # A tibble: 5 × 3
 ##   species   island        n
 ##   &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;
 ## 1 Adelie    Biscoe       44
@@ -218,7 +227,7 @@ dat %&gt;%
 ```
 
 ```
-## # A tibble: 333 x 5
+## # A tibble: 333 × 5
 ##    species island    bill_length_mm body_mass_g mean_bm
 ##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;       &lt;int&gt;   &lt;dbl&gt;
 ##  1 Adelie  Torgersen           39.1        3750   4207.
@@ -231,7 +240,8 @@ dat %&gt;%
 ##  8 Adelie  Torgersen           41.1        3200   4207.
 ##  9 Adelie  Torgersen           38.6        3800   4207.
 ## 10 Adelie  Torgersen           34.6        4400   4207.
-## # ... with 323 more rows
+## # … with 323 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 
@@ -247,7 +257,7 @@ dat %&gt;%
 ```
 
 ```
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##   mean_bm
 ##     &lt;dbl&gt;
 ## 1   4207.
@@ -268,7 +278,7 @@ dat %&gt;%
 ```
 
 ```
-## # A tibble: 333 x 5
+## # A tibble: 333 × 5
 ## # Groups:   species [3]
 ##    species island    bill_length_mm body_mass_g mean_bm
 ##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;       &lt;int&gt;   &lt;dbl&gt;
@@ -282,7 +292,8 @@ dat %&gt;%
 ##  8 Adelie  Torgersen           41.1        3200   3706.
 ##  9 Adelie  Torgersen           38.6        3800   3706.
 ## 10 Adelie  Torgersen           34.6        4400   3706.
-## # ... with 323 more rows
+## # … with 323 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 
@@ -301,7 +312,7 @@ dat %&gt;%
 ```
 
 ```
-## # A tibble: 3 x 2
+## # A tibble: 3 × 2
 ##   species   mean_bm
 ##   &lt;fct&gt;       &lt;dbl&gt;
 ## 1 Adelie      3706.
@@ -323,7 +334,7 @@ dat %&gt;%
 ```
 
 ```
-## # A tibble: 3 x 3
+## # A tibble: 3 × 3
 ##   species   bill_length_mm body_mass_g
 ##   &lt;fct&gt;              &lt;dbl&gt;       &lt;dbl&gt;
 ## 1 Adelie              38.8       3706.
@@ -346,7 +357,7 @@ dat %&gt;%
 ```
 
 ```
-## # A tibble: 3 x 3
+## # A tibble: 3 × 3
 ##   species   bill_length_mm body_mass_g
 ##   &lt;fct&gt;              &lt;dbl&gt;       &lt;dbl&gt;
 ## 1 Adelie              38.8       3706.
@@ -401,6 +412,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

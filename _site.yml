@@ -41,15 +41,15 @@ navbar:
         - text: "Exercise 1: Tidyverse data manipulation"
           href: Exercise_1_Tidyverse_Data_manipulation.html
         - text: "Exercise 1: Tidyverse data manipulation - Solutions"
-          href: Excercise_1_Data_manipulation_solution.html
+          href: 
         - text: "Exercise 2: Tidyverse ggplot2 data visualisation"
           href: Exercise_2_datavisualisation.html
         - text: "Exercise 2: Tidyverse ggplot2 data visualisation - Solutions"
-          href: Exercise_2_datavisualisation_solution.html
+          href: 
         - text: "Exercise 3 : Building your own Rmarkdown document"
           href: Exercise_3_Building_your_own_RMardown.html
         - text: "Exercise 3: Writing reproducible documents - Solutions"
-          href: Exercise_3_Building_your_own_RMardown_solution.html
+          href: 
         - text: "Exercise 4: Version control Git and Github"
           href: Exercise_4_Version_control_git_github.html
         - text: "Exercise 4 data bbrom"
