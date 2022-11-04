@@ -511,7 +511,12 @@ Blah blah (see Shea et al. 2014, 33–35; also Wu 2016, ch. 1).
 ---
 # Citations
 
-For an easy way to insert citations, try the [`citr`](https://github.com/crsh/citr) RStudio add-in.
+For an easy way to insert citations, try the [`citr`](https://github.com/crsh/citr) RStudio add-in. This should be done after installing and restarting R studio.
+To install, please use 
+```{r}
+devtools::install_github("crsh/citr") ## This helps to install citr
+```
+
 
 
 ```{r, out.width="75%", echo = FALSE}

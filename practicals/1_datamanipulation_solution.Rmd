@@ -39,6 +39,7 @@ The content of this module are based on materials from:
 
 .tiny-font[
 ```{r}
+library(palmerpenguins)
 penguins # display data
 ```
 ]
@@ -49,6 +50,8 @@ penguins # display data
 
 .tiny-font[
 ```{r}
+dim(penguins)
+glimpse(penguins)
 penguins %>% glimpse() # display data
 ```
 ]
@@ -63,6 +66,7 @@ dat <- penguins %>%
   filter(!is.na(sex)) %>% 
 # select variables
   select(species, island, bill_length_mm, body_mass_g) 
+glimpse(dat)
 ```
 
 ---
