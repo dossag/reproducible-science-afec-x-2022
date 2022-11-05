@@ -1,0 +1,25 @@
+---
+title: "writing report exercise"
+author: "Gbadamassi G.O. Dossa"
+date: '2022-11-05'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Tasks to perform
+
+You are asked to open the book on writing [R progrmming for data science book](https://leanpub.com/rprogramming) by [Dr Peng's](https://rdpeng.org/), then created  an R markdown file, give a name and save the file.
+Read the book, from the beginning to the end to get to know about the book content which actually covers the entire reproducible framework we covered so far.
+Now, please focus on the chapters 6 and 7 of the book and follow the outline that includes as headers the following to build up you file. Scientific question, Data analysis, Splitting the Dataset, Exploratory Data Analysis, Statistical Modeling, Interpreting Results,Challenge the Findings, Synthesizing Results. Make sure you respect the level of the headers and create a code chunk when computations happened.
+
+Please add a final quote which is the quotes you chose fro the article you read at the first day.
+Add a table which contains the columns that give information about your group member names, their sex, their age, their current job and their current affiliation.
+
+Please include your own photo as big size format and your institute logo as small size (Relatively smaller than the size of your photo.)
+
+Enjoy your hard work
+
+Where, the author mentioned about the data available to use please use an hyperlink to link that data to the package mentioned in the book.

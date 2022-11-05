@@ -407,7 +407,7 @@ class: inverse, center, middle
 
 --
 <ol>
-<li> Put references in a plain text file with the extension **.bib**, in **BibTex** format (my advice: use [Zotero](https://www.zotero.org))
+<li> Put references in a plain text file with the extension **.bib**, in **BibTex** format (my advice: use [Mendeley](https://www.mendeley.com/))
 </ol>
 ```bibtex
 *@article{Shea2014,
