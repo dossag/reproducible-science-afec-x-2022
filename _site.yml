@@ -56,10 +56,7 @@ navbar:
           href: practicals/writing-report-excercise.html
         - text: "Exercise 5: Writing reproducible documents - Solution"
           href: practicals/writing-report-excercise_solution.html
-        - text: "Practical 3: Writing reproducible documents - Word output"
-          href: 
-        - text: "Practical 4: Version control"
-          href: 
+         
     - icon: fab fa-github
       href: https://github.com/dossag
 output: distill::distill_article
