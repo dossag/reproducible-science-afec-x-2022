@@ -19,7 +19,7 @@ class: center, middle, title-slide
 ### <a href="https://scholar.google.com/citations?user=w20AkZcAAAAJ&amp;hl=en"><strong><em>Gbadamassi G.O. Dossa</em></strong></a>
 ]
 .date[
-### last updated: 2022-11-04
+### last updated: 2022-12-03
 ]
 
 ---
@@ -45,6 +45,7 @@ The content of this module are based on materials from:
 .tiny-font[
 
 ```r
+library(palmerpenguins)
 penguins # display data
 ```
 
@@ -75,6 +76,31 @@ penguins # display data
 .tiny-font[
 
 ```r
+dim(penguins)
+```
+
+```
+## [1] 344   8
+```
+
+```r
+glimpse(penguins)
+```
+
+```
+## Rows: 344
+## Columns: 8
+## $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+## $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
+## $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+## $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+## $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+## $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+## $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…
+## $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
+```
+
+```r
 penguins %&gt;% glimpse() # display data
 ```
 
@@ -103,6 +129,16 @@ dat &lt;- penguins %&gt;%
   filter(!is.na(sex)) %&gt;% 
 # select variables
   select(species, island, bill_length_mm, body_mass_g) 
+glimpse(dat)
+```
+
+```
+## Rows: 333
+## Columns: 4
+## $ species        &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie,…
+## $ island         &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, …
+## $ bill_length_mm &lt;dbl&gt; 39.1, 39.5, 40.3, 36.7, 39.3, 38.9, 39.2, 41.1, 38.6, 3…
+## $ body_mass_g    &lt;int&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 3800, 4…
 ```
 
 ---

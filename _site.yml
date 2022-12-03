@@ -39,25 +39,23 @@ navbar:
     - text: "Worksheets"
       menu:
         - text: "Exercise 1: Tidyverse data manipulation"
-          href: Exercise_1_Tidyverse_Data_manipulation.html
+          href: practicals/Exercise_1_Tidyverse_Data_manipulation.html
         - text: "Exercise 1: Tidyverse data manipulation - Solutions"
-          href: 1_datamanipulation_solution.html
+          href: practicals/1_datamanipulation_solution.html
         - text: "Exercise 2: Tidyverse ggplot2 data visualisation"
-          href: Exercise_2_datavisualisation.html
+          href: practicals/Exercise_2_datavisualisation.html
         - text: "Exercise 2: Tidyverse ggplot2 data visualisation - Solutions"
-          href: 2_datavisualisation_solution.html
+          href: practicals/2_datavisualisation_solution.html
         - text: "Exercise 3 : Building your own Rmarkdown document"
-          href: Exercise_3_Building_your_own_RMardown.html
-        - text: "Exercise 3: Writing reproducible documents - Solutions"
-          href: 
+          href: practicals/3_rmarkdown.html
+        - text: "Exercise 3: Building your own Rmarkdown document - Solutions"
+          href: practicals/3_rmarkdownsolution.html
         - text: "Exercise 4: Version control Git and Github"
-          href: Exercise_4_Version_control_git_github.html
-        - text: "Exercise 4 data bbrom"
-          href: bbmroData.csv
-        - text: "Exercise 4: Writing reproducible documents - Html output"
-          href: 
-        - text: "Practical 3: Writing reproducible documents - PDF output"
-          href: 
+          href: practicals/4_versioncontrol.html
+        - text: "Exercise 5: Writing reproducible documents"
+          href: practicals/writing-report-excercise.html
+        - text: "Exercise 5: Writing reproducible documents - Solution"
+          href: practicals/writing-report-excercise_solution.html
         - text: "Practical 3: Writing reproducible documents - Word output"
           href: 
         - text: "Practical 4: Version control"

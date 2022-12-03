@@ -1,7 +1,7 @@
 ---
 title: "writing report exercise"
 author: "Gbadamassi G.O. Dossa"
-date: '2022-11-05'
+date:  "(updated: `r Sys.Date()`)"
 output: html_document
 ---
 
