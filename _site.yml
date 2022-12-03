@@ -39,11 +39,11 @@ navbar:
     - text: "Worksheets"
       menu:
         - text: "Exercise 1: Tidyverse data manipulation"
-          href: practicals/Exercise_1_Tidyverse_Data_manipulation.html
+          href: practicals/1_datamanipulation.html
         - text: "Exercise 1: Tidyverse data manipulation - Solutions"
           href: practicals/1_datamanipulation_solution.html
         - text: "Exercise 2: Tidyverse ggplot2 data visualisation"
-          href: practicals/Exercise_2_datavisualisation.html
+          href: practicals/2_datavisualisation.html
         - text: "Exercise 2: Tidyverse ggplot2 data visualisation - Solutions"
           href: practicals/2_datavisualisation_solution.html
         - text: "Exercise 3 : Building your own Rmarkdown document"
